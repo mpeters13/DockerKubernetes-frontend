@@ -1,0 +1,10 @@
+language: generic
+sudo: required
+services:
+  - docker
+
+before_install:
+  - docker build -t mpeters0089/frontend -f Dockerfile.dev .
+
+script:
+  - docker run -e CI=true mpeters0089/frontend npm run test -- --coverage
